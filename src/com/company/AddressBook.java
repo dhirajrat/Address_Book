@@ -2,7 +2,9 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+    /*
+        Contact Class
+    */
 class Contact
 {
     private String firstName;
@@ -12,7 +14,9 @@ class Contact
     private String pNum;
     private String email;
 
-
+    /*
+        Contact Class constructor
+    */
     public Contact(){
     }
 
@@ -29,6 +33,9 @@ class Contact
         return firstName;
     }
 
+    /*
+        Add person method
+    */
     public ArrayList<Contact> addAPersonInList(ArrayList<Contact> contacts, int i)
     {
         Scanner sc =new Scanner(System.in);
@@ -42,7 +49,9 @@ class Contact
         contacts.add(i,new Contact(firstName, lastName, city, state, pNum, email));
         return contacts;
     }
-
+    /*
+        Show person method
+    */
     public void showPeopleList(ArrayList<Contact> contacts)
     {
         for (Contact contact : contacts) {
@@ -50,7 +59,9 @@ class Contact
             System.out.println(s);
         }
     }
-
+    /*
+        edit person method
+    */
     public ArrayList<Contact> editContactList(ArrayList<Contact> contacts, String fname)
     {
         int m = 0;
@@ -69,6 +80,9 @@ class Contact
         return contacts;
     }
 
+    /*
+        delete person method
+    */
     public ArrayList<Contact> deleteContact(ArrayList<Contact> contacts, String fname){
         int m = 0;
         for (Contact contact : contacts) {
@@ -98,7 +112,9 @@ class Contact
                 '}';
     }
 }
-
+    /*
+        AdressBook Manager
+    */
 class AddressBookManager{
 
     public static ArrayList<Contact> addressBookOperation(ArrayList<Contact> contactList){
@@ -129,7 +145,9 @@ class AddressBookManager{
         return contactList;
     }
 }
-
+    /*
+        Addressbook and Main
+    */
 public class AddressBook {
     public static void main(String[] args) {
         System.out.println("Welcome");
