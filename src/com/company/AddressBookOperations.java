@@ -112,7 +112,7 @@ public class AddressBookOperations
     }
 
     /**
-     * Search Contact By city or a State
+     * Search Contact By city or a State and Count
      * @param contacts
      * @param city
      */
