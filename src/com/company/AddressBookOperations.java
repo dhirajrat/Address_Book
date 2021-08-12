@@ -11,8 +11,9 @@ public class AddressBookOperations
     /**
         Add person method
     */
-    public static ArrayList<Contact> addAPersonInList(ArrayList<Contact> contacts, int i)
+    public static ArrayList<Contact> addAPersonInList(ArrayList<Contact> contacts)
     {
+        boolean contactPresent = false;
         Scanner sc =new Scanner(System.in);
         System.out.println("Enter firstname :");
         String firstName = sc.nextLine();
@@ -26,7 +27,18 @@ public class AddressBookOperations
         String pNum = sc.nextLine();
         System.out.println("Enter emailID :");
         String email = sc.nextLine();
-        contacts.add(i,new Contact(firstName, lastName, city, state, pNum, email));
+
+        // Checking If Contact Present Or Not If Not present then Add new Contact
+        for (Contact contact : contacts){
+            if(contact.getFirstName().equals(firstName) && contact.getLastName().equals(lastName) ){
+                contactPresent = true;
+                System.out.println("Contact already Present add another Contact");
+            }
+        }
+        if(contactPresent == false){
+            contacts.add(new Contact(firstName, lastName, city, state, pNum, email));
+        }
+
         return contacts;
     }
 
@@ -52,8 +64,23 @@ public class AddressBookOperations
         for (Contact contact : contacts) {
             int i = contacts.indexOf(contact);
             if(contacts.get(i).getFirstName().equals(fname)){
-                contacts= AddressBookOperations.addAPersonInList(contacts,i);
-                contacts.remove(contact);
+                boolean contactPresent = false;
+                Scanner sc =new Scanner(System.in);
+                System.out.println("Enter firstname :");
+                String firstName = sc.nextLine();
+                System.out.println("Enter lastname :");
+                String lastName = sc.nextLine();
+                System.out.println("Enter city :");
+                String city = sc.nextLine();
+                System.out.println("Enter state :");
+                String state = sc.nextLine();
+                System.out.println("Enter phone number :");
+                String pNum = sc.nextLine();
+                System.out.println("Enter emailID :");
+                String email = sc.nextLine();
+
+                // Checking If Contact Present Or Not If Not present then Add new Contact
+                contacts.add(i,new Contact(firstName, lastName, city, state, pNum, email));
                 m = 1;
                 break;
             }
