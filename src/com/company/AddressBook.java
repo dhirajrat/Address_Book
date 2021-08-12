@@ -24,7 +24,7 @@ public class AddressBook {
         while(maintain == 0)
         {
             System.out.println("Enter a choice");
-            System.out.println("1.Add a new AddressBook   2.Perform Operation on AddressBook  3.Display all AdressBooks   4.EXIT");
+            System.out.println("1.Add a new AddressBook   2.Perform Operation on AddressBook  3.Display all AdressBooks 4.Search people in City  5.EXIT");
             int choice = sc.nextInt();
             switch (choice)
             {
@@ -54,6 +54,18 @@ public class AddressBook {
                     break;
 
                 case 4:
+                    System.out.println("Enter City Or state Name to search");
+                    Scanner sc3 = new Scanner(System.in);
+                    String city = sc3.nextLine();
+                    Set<String> abKeySetToSearch = drive.keySet();
+                    System.out.println("");
+                    for(String conName : abKeySetToSearch){
+                        System.out.println("AddressBook {"+conName +"} With City/State : {"+city+"} :");
+                        AddressBookOperations.searchContactByCityOrState(drive.get(conName),city);
+                    }
+                    break;
+
+                case 5:
                     System.out.println("------>   EXIT   <------");
                     System.out.println(ANSI_RED + "    *-*-*-*-*-*-*-*-*-*-*-*-*           Good Bye!            *-*-*-*-*-*-*-*-*-*-*-*-*   " + ANSI_RESET);
                     maintain = 1;

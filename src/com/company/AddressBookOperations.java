@@ -110,4 +110,26 @@ public class AddressBookOperations
         }
         return contacts;
     }
+
+    /**
+     * Search Contact By city or State
+     * @param contacts
+     * @param city
+     */
+    public static void searchContactByCityOrState(ArrayList<Contact> contacts, String city){
+        int m = 0;
+        int count = 0;
+        for (Contact contact : contacts) {
+            int i = contacts.indexOf(contact);
+            if(contacts.get(i).getCity().equals(city) || contacts.get(i).getState().equals(city)){
+                System.out.println("Contact with : "+city+" : "+contacts.get(i).toString());
+                m = 1;
+                count++;
+            }
+        }
+        System.out.println(count+" Number Of people Found with City/State : "+city+" in this AddressBook");
+        if(m == 0){
+            System.out.println("Contact not found with this City Or State");
+        }
+    }
 }
