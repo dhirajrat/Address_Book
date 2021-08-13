@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
-    AdressBook Manager Manages Operations
+    AddressBook Manager Manages Operations
 */
 public class AddressBookOperationsManager {
 
@@ -17,7 +17,7 @@ public class AddressBookOperationsManager {
 
         while (maintainOp == 0) {
             System.out.println("\n****** Enter the Operation you want perform on AddressBook ******");
-            System.out.println("1.Add Contact   2.Edit Contact  3.Delete Contact  4.Print The Contacts  5.Sort AddressBook By Name 6.Sort AddressBook By City  7.Exit from This AddressBook");
+            System.out.println("1.Add Contact   2.Edit Contact  3.Delete Contact  4.Print The Contacts  5.Sort AddressBook By Name  6.Sort AddressBook By City  7.Exit from This AddressBook");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
