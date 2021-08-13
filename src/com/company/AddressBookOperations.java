@@ -1,16 +1,18 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
- *      Class Holds the methods used to  perform different operation on AddressBook
+ * Class Holds the methods used to  perform different operation on AddressBook
  */
 public class AddressBookOperations
 {
     /**
-        Add person method
-    */
+     * Add person method
+     * @param contacts
+     * @return
+     */
     public static ArrayList<Contact> addAPersonInList(ArrayList<Contact> contacts)
     {
         boolean contactPresent = false;
@@ -43,8 +45,9 @@ public class AddressBookOperations
     }
 
     /**
-        Show person method
-    */
+     * Show person method
+     * @param contacts
+     */
     public static void showPeopleList(ArrayList<Contact> contacts)
     {
         System.out.println("----------------------------------------------------------");
@@ -56,8 +59,11 @@ public class AddressBookOperations
     }
 
     /**
-        edit person method
-    */
+     * edit person method
+     * @param contacts
+     * @param fname
+     * @return
+     */
     public static  ArrayList<Contact> editContactList(ArrayList<Contact> contacts, String fname)
     {
         int m = 0;
@@ -92,8 +98,11 @@ public class AddressBookOperations
     }
 
     /**
-        delete person method
-    */
+     * delete person method
+     * @param contacts
+     * @param fname
+     * @return
+     */
     public static ArrayList<Contact> deleteContact(ArrayList<Contact> contacts, String fname){
         int m = 0;
         for (Contact contact : contacts) {
@@ -131,5 +140,61 @@ public class AddressBookOperations
         if(m == 0){
             System.out.println("Contact not found with this City Or State");
         }
+    }
+
+    /**
+     * Sort AddressBook By Names
+     * @param contactList
+     * @return
+     */
+    public static ArrayList<Contact> sortByName(ArrayList<Contact> contactList) {
+        List<String> names = new ArrayList();
+        for (Contact contact: contactList) {
+            names.add(contact.getFirstName());
+        }
+
+        Stream<String> sortedNames = names.stream().sorted();
+
+        ArrayList<Contact> sortedContactList = new ArrayList<>();
+
+        sortedNames.forEach(name -> {
+            for (Contact contact: contactList) {
+                if(contact.getFirstName().equals(name)) {
+                    sortedContactList.add(contact);
+                    contactList.remove(contact);
+                    break;
+                }
+            }
+        });
+        System.out.println("*** AddressBook Sorted Out By Name ***");
+        return sortedContactList;
+    }
+
+    /**
+     * Sort By City
+     * @param contactList
+     * @return
+     */
+    public static ArrayList<Contact> sortByCity(ArrayList<Contact> contactList) {
+        List<String> names = new ArrayList();
+        for (Contact contact: contactList) {
+            names.add(contact.getCity());
+        }
+
+        Stream<String> sortedNames = names.stream().sorted();
+
+        ArrayList<Contact> sortedContactList = new ArrayList<>();
+
+        sortedNames.forEach(name -> {
+            for (Contact contact: contactList) {
+                if(contact.getCity().equals(name)) {
+                    sortedContactList.add(contact);
+                    contactList.remove(contact);
+                    break;
+                }
+            }
+        });
+        System.out.println("*** AddressBook Sorted Out By City ***");
+        return sortedContactList;
     }
 }

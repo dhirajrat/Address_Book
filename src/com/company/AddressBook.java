@@ -24,7 +24,7 @@ public class AddressBook {
         while(maintain == 0)
         {
             System.out.println("Enter a choice");
-            System.out.println("1.Add a new AddressBook   2.Perform Operation on AddressBook  3.Display all AdressBooks 4.Search people in City  5.EXIT");
+            System.out.println("1.Add a new AddressBook   2.Perform Operation on AddressBook  3.Display all AddressBooks 4.Search people in Particular City/State  5.EXIT");
             int choice = sc.nextInt();
             switch (choice)
             {
@@ -38,10 +38,15 @@ public class AddressBook {
                     break;
 
                 case 2:
-                    System.out.println("Enter Address Book name to Perform Operation On");
-                    Scanner sc2 = new Scanner(System.in);
-                    String addressBookName2 = sc2.nextLine();
-                    AddressBookOperationsManager.addressBookOperation(drive.get(addressBookName2));
+                    if(drive.isEmpty()){
+                        System.out.println("Drive is Empty add Any AddressBook to Perform Operations");
+                    }
+                    else {
+                        System.out.println("Enter Address Book name to Perform Operation On");
+                        Scanner sc2 = new Scanner(System.in);
+                        String addressBookName2 = sc2.nextLine();
+                        AddressBookOperationsManager.addressBookOperation(drive.get(addressBookName2));
+                    }
                     break;
 
                 case 3:
@@ -54,14 +59,19 @@ public class AddressBook {
                     break;
 
                 case 4:
-                    System.out.println("Enter City Or state Name to search");
-                    Scanner sc3 = new Scanner(System.in);
-                    String city = sc3.nextLine();
-                    Set<String> abKeySetToSearch = drive.keySet();
-                    System.out.println("");
-                    for(String conName : abKeySetToSearch){
-                        System.out.println("AddressBook {"+conName +"} With City/State : {"+city+"} :");
-                        AddressBookOperations.searchContactByCityOrState(drive.get(conName),city);
+                    if(drive.isEmpty()){
+                        System.out.println("Drive is Empty add Any AddressBook to Perform Operations");
+                    }
+                    else {
+                        System.out.println("Enter City Or state Name to search");
+                        Scanner sc3 = new Scanner(System.in);
+                        String city = sc3.nextLine();
+                        Set<String> abKeySetToSearch = drive.keySet();
+                        System.out.println("");
+                        for (String conName : abKeySetToSearch) {
+                            System.out.println("AddressBook {" + conName + "} With City/State : {" + city + "} :");
+                            AddressBookOperations.searchContactByCityOrState(drive.get(conName), city);
+                        }
                     }
                     break;
 

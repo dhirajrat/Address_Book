@@ -17,7 +17,7 @@ public class AddressBookOperationsManager {
 
         while (maintainOp == 0) {
             System.out.println("\n****** Enter the Operation you want perform on AddressBook ******");
-            System.out.println("1.Add Contact   2.Edit Contact  3.Delete Contact  4.Print The Contacts  5.Exit from This AddessBook");
+            System.out.println("1.Add Contact   2.Edit Contact  3.Delete Contact  4.Print The Contacts  5.Sort AddressBook By Name 6.Sort AddressBook By City  7.Exit from This AddressBook");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -46,6 +46,14 @@ public class AddressBookOperationsManager {
                     break;
 
                 case 5:
+                    contactList = AddressBookOperations.sortByName(contactList);
+                    break;
+
+                case 6:
+                    contactList = AddressBookOperations.sortByCity(contactList);
+                    break;
+
+                case 7:
                     System.out.println("AddressBook Operation --> EXIT <--");
                     maintainOp = 1;
                     break;
