@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -87,6 +88,8 @@ public class AddressBookOperations
 
                 // Checking If Contact Present Or Not If Not present then Add new Contact
                 contacts.add(i,new Contact(firstName, lastName, city, state, pNum, email));
+                int deleteExtra = i + 1;
+                contacts.remove(deleteExtra);
                 m = 1;
                 break;
             }
@@ -148,53 +151,29 @@ public class AddressBookOperations
      * @return
      */
     public static ArrayList<Contact> sortByName(ArrayList<Contact> contactList) {
-        List<String> names = new ArrayList();
-        for (Contact contact: contactList) {
-            names.add(contact.getFirstName());
-        }
+        ArrayList<Contact> sortedContactList = (ArrayList<Contact>) contactList.stream()
+                .sorted(Comparator.comparing(Contact::getFirstName))
+                .collect(Collectors.toList());
 
-        Stream<String> sortedNames = names.stream().sorted();
 
-        ArrayList<Contact> sortedContactList = new ArrayList<>();
-
-        sortedNames.forEach(name -> {
-            for (Contact contact: contactList) {
-                if(contact.getFirstName().equals(name)) {
-                    sortedContactList.add(contact);
-                    contactList.remove(contact);
-                    break;
-                }
-            }
-        });
-        System.out.println("*** AddressBook Sorted Out By Name ***");
-        return sortedContactList;
+        System.out.println("*** AddressBook Sorted Out By City ***");
+        return sortedContactList;//tempList;
     }
 
     /**
+     * addBook.persons.stream().sorted(Comparator.comparing(Contact::getFirstname)).collect(Collectors.toList());
      * Sort By City
      * @param contactList
      * @return
      */
     public static ArrayList<Contact> sortByCity(ArrayList<Contact> contactList) {
-        List<String> names = new ArrayList();
-        for (Contact contact: contactList) {
-            names.add(contact.getCity());
-        }
 
-        Stream<String> sortedNames = names.stream().sorted();
+        ArrayList<Contact> sortedContactList = (ArrayList<Contact>) contactList.stream()
+                .sorted(Comparator.comparing(Contact::getCity))
+                .collect(Collectors.toList());
 
-        ArrayList<Contact> sortedContactList = new ArrayList<>();
 
-        sortedNames.forEach(name -> {
-            for (Contact contact: contactList) {
-                if(contact.getCity().equals(name)) {
-                    sortedContactList.add(contact);
-                    contactList.remove(contact);
-                    break;
-                }
-            }
-        });
         System.out.println("*** AddressBook Sorted Out By City ***");
-        return sortedContactList;
+        return sortedContactList;//tempList;
     }
 }

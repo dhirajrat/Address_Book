@@ -1,10 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 
 /**
-    To manage Multiple AddressBooks created a Contact list Class
+ To manage Multiple AddressBooks created a Contact list Class
  */
 public class ContactList{
     ArrayList<Contact> aList;
@@ -13,7 +13,7 @@ public class ContactList{
         this.aList = aList;
     }
 
-    public static Map<String,ArrayList<Contact>> add(String addressBookName, Map<String,ArrayList<Contact>> drive)
+    public static HashMap<String,ArrayList<Contact>> add(String addressBookName, HashMap<String,ArrayList<Contact>> drive)
     {
         ArrayList<Contact> contactList = new ArrayList<>();
         drive.put(addressBookName,contactList);
